@@ -2,8 +2,8 @@ from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from backend.generate_quiz import generate_quiz
-from backend.chunk_manager import create_session, get_random_chunk
+from generate_quiz import generate_quiz
+from chunk_manager import create_session, get_random_chunk
 
 from io import BytesIO
 from pypdf import PdfReader
@@ -126,3 +126,4 @@ async def generate_again(
     result = generate_quiz(chunk, question_count, difficulty)
 
     return {"quiz": result, "session_id": session_id}
+
