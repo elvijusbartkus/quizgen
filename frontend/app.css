@@ -1,0 +1,308 @@
+/* =====================================================
+   GLOBAL BACKGROUND TO MATCH LANDING PAGE
+===================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Space Grotesk", sans-serif;
+    background: transparent;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* MAIN GRADIENT */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -25vh -25vw -25vh -25vw;
+    z-index: -5;
+    background: linear-gradient(135deg, #6A2DFF 0%, #A66BFF 50%, #8B44FF 100%);
+    background-size: cover;
+}
+
+/* FLOATING BLOBS */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -25vh -25vw -25vh -25vw;
+    z-index: -4;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 25%, rgba(255,130,255,0.55), rgba(160,80,255,0.20) 60%),
+        radial-gradient(circle at 78% 70%, rgba(130,200,255,0.55), rgba(110,130,255,0.20) 55%);
+    animation: blobFloat 22s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -50px) scale(1.08); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* =====================================================
+   NAVBAR (MATCH LANDING STYLE)
+===================================================== */
+
+.navbar {
+    padding: 20px 32px;
+    font-weight: 600;
+    z-index: 10;
+    position: relative;
+    color: white;
+}
+
+.nav-title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+}
+
+/* =====================================================
+   PAGE HEADING (INTEGRATED INTO BACKGROUND)
+===================================================== */
+
+.sub-hero {
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 80px;
+    color: white;
+    animation: fadeInHero 1.1s ease-out forwards;
+    opacity: 0;
+}
+
+.sub-hero h2 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    text-shadow: 0 8px 28px rgba(0,0,0,0.23);
+    margin: 0;
+}
+
+@keyframes fadeInHero {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* =====================================================
+   MAIN CONTENT CARD (GLASS EFFECT)
+===================================================== */
+
+.container {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(18px);
+    border-radius: 26px;
+
+    width: 90%;
+    max-width: 880px;
+    margin: 0 auto 100px;
+    padding: 48px;
+
+    box-shadow:
+        0 10px 26px rgba(0,0,0,0.08),
+        0 0 28px rgba(255,255,255,0.30);
+
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* =====================================================
+   BUTTONS (MATCH LANDING SOFT PURPLE)
+===================================================== */
+
+button,
+.custom-file-btn {
+    background: linear-gradient(135deg, #8B4CFF, #A66BFF);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 14px;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
+    box-shadow: 0 6px 18px rgba(120, 90, 255, 0.35);
+    letter-spacing: -0.2px;
+}
+
+button:hover,
+.custom-file-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(120, 90, 255, 0.45);
+}
+
+/* =====================================================
+   FILE INPUT ROW
+===================================================== */
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+#fileInput { display: none; }
+
+#fileName {
+    font-size: 15px;
+    font-weight: 500;
+    color: #3A2C6D;
+}
+
+/* =====================================================
+   SLIDER COMPONENT
+===================================================== */
+
+.question-slider-box { margin-top: 25px; }
+
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+#questionSlider {
+    width: 100%;
+    appearance: none;
+    height: 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8B4CFF, #BC87FF);
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(123,92,255,0.3);
+}
+
+#questionSlider::-webkit-slider-thumb {
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 12px rgba(123,92,255,0.9);
+    cursor: pointer;
+}
+
+#questionSlider::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 12px rgba(123,92,255,0.9);
+}
+
+.slider-value {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #8B4CFF, #BC87FF);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(123,92,255,0.6);
+}
+
+.slider-ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    color: #000;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   DIFFICULTY SELECTOR (GLASS SUBCARD)
+===================================================== */
+
+.difficulty-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+}
+
+.difficulty-box label {
+    font-weight: 600;
+    color: #5A31CC;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.difficulty-options label {
+    font-size: 17px;
+    margin-right: 20px;
+    color: #222;
+    cursor: pointer;
+}
+
+.difficulty-options input[type="radio"] {
+    transform: scale(1.25);
+    margin-right: 6px;
+    accent-color: #7C4DFF;
+}
+
+/* =====================================================
+   QUIZ BLOCKS
+===================================================== */
+
+.quiz-question {
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.quiz-question p {
+    font-size: 21px;
+    font-weight: 600;
+    color: #5A31CC;
+    letter-spacing: -0.2px;
+}
+
+.quiz-question label {
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+/* =====================================================
+   RESULTS BOX
+===================================================== */
+
+#result {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.35);
+    backdrop-filter: blur(12px);
+    animation: fadeInUp 0.5s ease-out;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

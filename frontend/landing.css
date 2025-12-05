@@ -1,0 +1,133 @@
+/* ===============================
+   GLOBAL PAGE BACKGROUND (FIXED)
+================================= */
+
+body.landing-body {
+    margin: 0;
+    padding: 0;
+    font-family: "Space Grotesk", sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    background: transparent;
+}
+
+/* MAIN GRADIENT */
+body.landing-body::before {
+    content: "";
+    position: fixed;
+    inset: -25vh -25vw -25vh -25vw;
+    z-index: -5;
+    background: linear-gradient(135deg, #6A2DFF 0%, #A66BFF 50%, #8B44FF 100%);
+    background-size: cover;
+}
+
+/* FLOATING BLOBS */
+body.landing-body::after {
+    content: "";
+    position: fixed;
+    inset: -25vh -25vw -25vh -25vw;
+    z-index: -4;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 25%, rgba(255,130,255,0.55), rgba(160,80,255,0.2) 60%),
+        radial-gradient(circle at 78% 70%, rgba(130,200,255,0.55), rgba(110,130,255,0.2) 55%);
+    animation: blobFloat 22s ease-in-out infinite;
+}
+
+@keyframes blobFloat {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -50px) scale(1.08); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ===============================
+   NAVBAR
+================================= */
+
+.navbar {
+    padding: 20px 32px;
+    font-weight: 600;
+    z-index: 5;
+}
+
+.nav-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+/* ===============================
+   HERO SECTION
+================================= */
+
+.hero {
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 130px;
+    max-width: 900px;
+    margin: auto;
+    color: white;
+    z-index: 3;
+    animation: fadeInHero 1.1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInHero {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* HERO HEADING */
+.hero h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    text-shadow: 0 8px 28px rgba(0,0,0,0.23);
+}
+
+/* SUBTITLE */
+.subtitle {
+    font-size: 22px;
+    line-height: 1.45;
+    max-width: 640px;
+    margin: 12px auto 0;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.35);
+}
+
+/* CTA BUTTON */
+.start-btn {
+    margin-top: 40px;
+    display: inline-block;
+    padding: 16px 30px;
+    background: white;
+    color: #602DCC;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    letter-spacing: -0.2px;
+    transition: 0.22s ease-out;
+}
+
+.start-btn:hover {
+    transform: translateY(-3px);
+    background: #f4edff;
+}
+
+/* FEATURE BULLETS */
+.features {
+    margin-top: 55px;
+    font-size: 19px;
+    color: rgba(255,255,255,0.88);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 300;
+    letter-spacing: -0.1px;
+}

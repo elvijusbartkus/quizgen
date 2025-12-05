@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testų generatorius — Programa</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="app.css">
+
+    <!-- PDF + Canvas libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- Main JS logic -->
+    <script src="script.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <span class="nav-title">Testų generatorius</span>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="sub-hero">
+    <h2>Generuokite testus iš dokumentų</h2>
+</div>
+
+
+    <!-- MAIN APP -->
+    <div class="container">
+
+        <!-- FILE INPUT AREA -->
+        <div class="file-row">
+            <label for="fileInput" class="custom-file-btn">Pasirinkti failą</label>
+            <input type="file" id="fileInput" />
+            <span id="fileName">Failas nepasirinktas</span>
+            <button id="generateBtn">Generuoti testą</button>
+        </div>
+
+<!-- QUESTION COUNT SLIDER -->
+<div class="question-slider-box">
+    <label for="questionSlider">Klausimų skaičius:</label>
+
+    <div class="slider-wrapper">
+        <input type="range" id="questionSlider" min="5" max="30" step="5" value="10">
+        <div id="sliderValue" class="slider-value">10</div>
+    </div>
+
+    <!-- Tick labels -->
+    <div class="slider-ticks">
+        <span>5</span>
+        <span>10</span>
+        <span>15</span>
+        <span>20</span>
+        <span>25</span>
+        <span>30</span>
+    </div>
+</div>
+
+<!-- DIFFICULTY SELECTOR -->
+<div class="difficulty-box">
+    <label>Sunkumo lygis:</label>
+    <div class="difficulty-options">
+        <label><input type="radio" name="difficulty" value="easy" checked> Lengvas</label>
+        <label><input type="radio" name="difficulty" value="medium"> Vidutinis</label>
+        <label><input type="radio" name="difficulty" value="hard"> Sunkus</label>
+    </div>
+</div>
+
+
+        <!-- EDIT MODE BANNER -->
+        <div id="edit-banner" class="edit-banner" style="display:none;">
+            Klausimus galima redaguoti. Spausk ant teksto, kad pakeistum.
+        </div>
+
+        <!-- MODE TOGGLE -->
+        <div id="mode-toggle" class="mode-toggle" style="display:none;">
+            <button id="editModeBtn" class="mode-btn active">Redagavimo režimas</button>
+            <button id="quizModeBtn" class="mode-btn">Testo režimas</button>
+        </div>
+
+        <!-- LOADING -->
+        <div id="loading-overlay" style="display:none;">
+            <div id="loading">
+                <div class="spinner"></div>
+                <p id="loadingMessage">Dokumentas apdorojamas...</p>
+            </div>
+        </div>
+
+        <!-- QUIZ CONTENT -->
+        <div id="quiz-container"></div>
+
+        <!-- ACTION BUTTONS (HIDDEN UNTIL READY) -->
+        <div class="action-row" id="extra-buttons" style="display:none;">
+            <button id="againBtn">Generuoti naują testą</button>
+            <button id="pdfBtn">Atsisiųsti PDF</button>
+            <button id="shuffleBtn">Sumaišyti klausimus</button>
+        </div>
+      
+  
+
+        <!-- RESULTS -->
+        <div id="result"></div>
+
+        <div id="success-check" class="success-check hidden"></div></div>
+    </div>
+
+</body>
+</html>
